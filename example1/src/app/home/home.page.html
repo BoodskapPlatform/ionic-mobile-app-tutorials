@@ -3,33 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title >
-      <span >Home</span>
-
+    <ion-title>
+      <span>Home</span>
       <ion-img (click)="startdrive()" class="startImg" src="/assets/icon/start.png"></ion-img>
-      <div class="activeColor" [ngStyle]="{'background': this.commonService.switchActive == true? '#2ecc71' : '#d64541','animation':this.msgmqttactive? 'mymove 2s infinite;':'unset'}"></div>
+      <div class="activeColor"
+        [ngStyle]="{'background': this.commonService.switchActive == true? '#2ecc71' : '#d64541','animation':this.msgmqttactive? 'mymove 2s infinite;':'unset'}">
+      </div>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!-- <ion-card class="bg-arrange" *ngIf="commonService.msgShow">
-    <ion-row>
-      <ion-col size="1" style="margin: auto;">
-        <ion-img style="width:25px" src="assets/icon/location.png"></ion-img>
-      </ion-col>
-      <ion-col size="11" class="p-0">
-        <p class="textarrange">Lat / Long :  <span class="folderText">{{currentLat | number: '1.0-2'}}, {{currentLong | number: '1.0-2'}}</span></p>
-        <p class="textarrange">Destination : <span class="folderText">{{commonService.destinationPoint}}</span></p>
-        <p class="textarrange">Distance : <span class="folderText">{{mqttdistance}}</span>  </p>
-    <p class="textarrange"><span> Duration : <span class="folderText">{{mqttduration}}</span></span></p>
-      </ion-col>
-
-    </ion-row>
-      
-     
-  </ion-card> -->
-
-<div id="map_canvas">
-</div>
+  <div id="map_canvas">
+  </div>
 </ion-content>

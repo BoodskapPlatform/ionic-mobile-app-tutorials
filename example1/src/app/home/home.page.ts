@@ -2,7 +2,6 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { environment } from '../../environments/environment.prod';
 import { CommonServiceService } from '../service/common-service.service';
 import { Storage } from '@ionic/storage-angular';
-
 import { Geolocation, GeolocationOptions, Geoposition, PositionError } from '@ionic-native/geolocation/ngx';
 import { Platform } from '@ionic/angular'
 import {
@@ -19,7 +18,6 @@ import {
 import { MenuController, LoadingController, AlertController, PopoverController } from '@ionic/angular';
 import { AppComponent } from '../app.component';
 import { DrivePopoverComponent } from '../drive-popover/drive-popover.component';
-
 import { from } from 'rxjs';
 
 @Component({
@@ -41,8 +39,8 @@ export class HomePage implements OnInit {
   public setTimeInterval: any;
   public markers: Marker[] = [
   ];
-  public Google="google.map.key";
-  public googleApiKey:any;
+  public Google = "google.map.key";
+  public googleApiKey: any;
   constructor(public alertController: AlertController, private geolocation: Geolocation, public loadingController: LoadingController, public popoverCtrl: PopoverController, public storage: Storage, public commonService: CommonServiceService, public app: AppComponent, public ngZone: NgZone, public platform: Platform, public menu: MenuController) {
 
   }
@@ -188,20 +186,20 @@ export class HomePage implements OnInit {
     }, 5000);
   }
   GetGoogleApiKey() {
-    let actionURL="/domain/property/get/" + environment.API_TOKEN+"/"+this.Google
-      this.commonService.getAllCall(actionURL)
-     .subscribe(async res => {
-       if (res) {
- this.googleApiKey=JSON.parse(res.value)
- this.googleApiKey= this.googleApiKey.apiKey
- await this.platform.ready()
- await this.getUserPosition(0)
-         console.log(this.googleApiKey)
-       } else {
-         this.commonService.presentToast('Invalid')
-       }
-     }, err => {
-       this.commonService.presentToast('Something went wrong')
-     });
- }
+    let actionURL = "/domain/property/get/" + environment.API_TOKEN + "/" + this.Google
+    this.commonService.getAllCall(actionURL)
+      .subscribe(async res => {
+        if (res) {
+          this.googleApiKey = JSON.parse(res.value)
+          this.googleApiKey = this.googleApiKey.apiKey
+          await this.platform.ready()
+          await this.getUserPosition(0)
+          console.log(this.googleApiKey)
+        } else {
+          this.commonService.presentToast('Invalid')
+        }
+      }, err => {
+        this.commonService.presentToast('Something went wrong')
+      });
+  }
 }
