@@ -1,0 +1,78 @@
+ion-label {
+    display: block;
+    font-size: 13px;
+    color: #000;
+    text-align: left;
+    width: 100%;
+}
+
+.sc-ion-input-ios-h,
+ion-input {
+    display: block;
+    border-top: none;
+    border-left: none;
+    font-size: 13px;
+    border-right: none;
+    background: transparent;
+    border-bottom: 1px solid;
+    width: 100%;
+    margin: 8px 0 17px;
+    text-align: left;
+}
+
+input:focus {
+    outline: none;
+    background: transparent;
+}
+
+form {
+    width: 85%;
+    margin: 0 auto;
+    color: #000;
+    text-align: center;
+}
+ 
+ion-button{
+    width: 80%;
+    font-weight: bold;
+    margin-top: 20px;
+}
+h6{
+    margin-bottom: 35px;
+}
+ion-img{
+    width: 250px;
+    margin: 140px auto 0px;
+}
+
+.font13{
+    font-size: 13px;
+}
+
+.powerby {
+    margin: 30px auto 0px;
+    text-align: center;
+}
+
+.powerby ion-img {
+    width: 30px;
+    display: inline-block;
+    position: absolute;
+    margin-top: -7px;
+}
+.boodskaptext {
+    margin-left: 33px;
+}
+.position-absolute{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+} 
+.login-right-bottom ion-img{
+width: 100%;
+height: 100%;
+margin: 0;
+}
+.font15{
+    font-size: 15px;
+}

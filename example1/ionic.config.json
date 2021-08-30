@@ -1,0 +1,7 @@
+{
+  "name": "boodskap-tutorial-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

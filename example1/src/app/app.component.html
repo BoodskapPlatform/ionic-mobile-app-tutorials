@@ -1,0 +1,44 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+     
+      <ion-content>
+        <p class="closings" (click)="closeIcon()"><i class="fa fa-times" (click)="closeIcon()" aria-hidden="true"></i></p>
+
+        <div class="profileimg ion-text-center">
+                <div>
+                  <img src="/assets/icon/user.png" class="user-img">
+
+                </div>  
+         
+              <p class="userName" ><b>{{a_user_name}}</b></p>
+              <p class="usermail ion-no-margin">{{a_user_id}}</p>
+        </div> 
+ 
+     
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+          
+            <ion-item (click)="selectedIndex = i" routerDirection="root" *ngIf="p.icon != 'log-out-outline'" [routerLink]="[p.url]" lines="none"
+            detail="false" [class.selected]="selectedIndex == i">
+            <ion-icon slot="start" *ngIf="selectedIndex == i" [name]="p.icon" class="iconColorSelect" ></ion-icon>
+            <ion-icon slot="start" *ngIf="!(selectedIndex == i)" [name]="p.icon" class="iconColor" ></ion-icon>
+
+           
+            <ion-label>{{ p.title }}</ion-label><i class="fa fa-angle-right" aria-hidden="true"></i>
+          </ion-item>
+          <ion-item  *ngIf="p.icon == 'log-out-outline'" (click)="logout()" >
+            <!-- <ion-img class="leftmenu" src={{p.img1}} *ngIf="selectedIndex == i"></ion-img>
+            <ion-img class="leftmenu" src={{p.img2}} *ngIf="!(selectedIndex == i)"></ion-img> -->
+           
+            <ion-icon slot="start" [name]="p.icon"  *ngIf="!(selectedIndex == i)" class="iconColor" ></ion-icon>
+            <ion-label >
+              {{p.title}}
+            </ion-label> 
+          </ion-item>
+          </ion-menu-toggle>
+          
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

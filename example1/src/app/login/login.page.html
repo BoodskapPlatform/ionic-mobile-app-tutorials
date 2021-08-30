@@ -1,0 +1,28 @@
+<ion-content>
+  <ion-img src="/assets/icon/bdskap-logo.png"></ion-img>
+  <h5 class="ion-text-center theme-bold-color">Boodskap Tutorial</h5>
+  <form [formGroup]="loginForm">
+    <ion-label for="username">Username</ion-label>
+    <ion-input type="email" id="username" formControlName="emailid" required>
+    </ion-input>
+    <ion-label for="loginpwd">Password</ion-label>
+    <ion-input type="password" formControlName="password" id="loginpwd" required>
+    </ion-input>
+
+    <ion-button class="login-button m-10 text-center" [disabled]="loginForm.invalid" (click)="login()">
+      <span id="loginTxt" class="login-fdbk" style="font-family: 'Roboto', sans-serif;">Log In</span>
+      <span id="loginFdbk" class="login-fdbk" style="display: none;">
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <span style="font-family: Play;">Loading...</span>
+      </span>
+    </ion-button>
+    <p class="font13">v <span>{{apiversion}}</span></p>
+    <div class="powerby">
+      <span class="font15"> Powered by </span>
+      <ion-img src="/assets/icon/boodskap-logos.png"></ion-img> <span class="boodskaptext font15">Boodskap</span>
+    </div>
+  </form>
+  <div class="position-absolute login-right-bottom">
+    <ion-img src="/assets/icon/login-right-bottom.svg"></ion-img>
+  </div>
+</ion-content>
