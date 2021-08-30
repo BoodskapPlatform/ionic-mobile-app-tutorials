@@ -28,28 +28,27 @@ import { from } from 'rxjs';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  map: GoogleMap;
+  public map: GoogleMap;
   public LIVE_OBJ: any = {};
   public currentLat: any;
   public currentLong: any;
-  options: GeolocationOptions;
-  currentPos: Geoposition;
+  public options: GeolocationOptions;
+  public currentPos: Geoposition;
   public destinationList: any = [];
   public destinationPoint: any;
   public arrayList: any = [];
   public _storage: any;
   public setTimeInterval: any;
-  markers: Marker[] = [
+  public markers: Marker[] = [
   ];
+  public Google="google.map.key";
+  public googleApiKey:any;
   constructor(public alertController: AlertController, private geolocation: Geolocation, public loadingController: LoadingController, public popoverCtrl: PopoverController, public storage: Storage, public commonService: CommonServiceService, public app: AppComponent, public ngZone: NgZone, public platform: Platform, public menu: MenuController) {
 
   }
 
   async ngOnInit() {
-
-    await this.platform.ready()
-    await this.getUserPosition(0)
-
+    await this.GetGoogleApiKey()
     await this.menu.enable(true);
     this.app.getUserDetails()
 
@@ -96,8 +95,8 @@ export class HomePage implements OnInit {
   loadMap() {
     // This code is necessary for browser
     Environment.setEnv({
-      'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyBa0bLLKhNNFKfc_5OkiXmJZfSN33-CII0',
-      'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyBa0bLLKhNNFKfc_5OkiXmJZfSN33-CII0'
+      'API_KEY_FOR_BROWSER_RELEASE': this.googleApiKey,
+      'API_KEY_FOR_BROWSER_DEBUG': this.googleApiKey
     });
     let mapOptions: GoogleMapOptions = {
       camera: {
@@ -188,4 +187,21 @@ export class HomePage implements OnInit {
       this.getUserPosition(1)
     }, 5000);
   }
+  GetGoogleApiKey() {
+    let actionURL="/domain/property/get/" + environment.API_TOKEN+"/"+this.Google
+      this.commonService.getAllCall(actionURL)
+     .subscribe(async res => {
+       if (res) {
+ this.googleApiKey=JSON.parse(res.value)
+ this.googleApiKey= this.googleApiKey.apiKey
+ await this.platform.ready()
+ await this.getUserPosition(0)
+         console.log(this.googleApiKey)
+       } else {
+         this.commonService.presentToast('Invalid')
+       }
+     }, err => {
+       this.commonService.presentToast('Something went wrong')
+     });
+ }
 }
